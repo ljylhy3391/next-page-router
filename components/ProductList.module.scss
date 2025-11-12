@@ -1,0 +1,53 @@
+/*
+item을 한줄에 3개씩 보여주고, 모바일에서는 1개씩 보여주기 (반응형 디자인)
+ */
+
+.product-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @media (min-width: 768px) {
+    padding: 0 40px;
+  }
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: 1fr; /* 모바일: 한 줄에 1개 */
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  /* 데스크톱: 한 줄에 3개 */
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.product-item {
+  /* 기본 스타일 초기화 */
+  padding: 0;
+  margin: 0;
+
+  /* 호버 효과 */
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: transform 0.2s ease;
+  }
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.product-name,
+.product-price {
+  margin: 8px 0 0 0;
+  padding: 0;
+}

@@ -13,8 +13,7 @@ function Layout({ children }) {
   return (
     <div>
       <nav>
-        <Link href="/">홈</Link> |<Link href="/cart">장바구니</Link> |
-        <Link href="/login">로그인</Link> |
+        <Link href="/">홈</Link> | <Link href="/cart">장바구니</Link>
       </nav>
       {children}
     </div>
