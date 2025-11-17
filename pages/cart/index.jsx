@@ -1,9 +1,21 @@
-// 카트 페이지
+/* 장바구니 페이지 */
 
-export default function Cart() {
+import CartHead from "@/components/CartHead";
+import CartList from "@/components/CartList";
+import { fetchCarts } from "@/api";
+
+function Cart({ carts }) {
   return (
     <div>
-      <h1>장바구니페이지</h1>
+      <CartHead title="장바구니" />
+      <CartList carts={carts} />
     </div>
   );
+}
+
+export default Cart;
+
+export async function getServerSideProps() {
+  const carts = await fetchCarts();
+  return { props: { carts } };
 }
