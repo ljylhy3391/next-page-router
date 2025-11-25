@@ -45,10 +45,17 @@ function createCart({ id, name, price, imageUrl }) {
   });
 }
 
+function deleteCart(id) {
+  return api(`/carts/${id}`, {
+    method: "DELETE",
+  });
+}
+
 export {
   fetchProducts,
   fetchProductsById,
   fetchCarts,
   fetchCartsById,
   createCart,
+  deleteCart,
 };

@@ -1,12 +1,21 @@
 /* 장바구니 목록 컴포넌트 */
 import Image from "next/image";
 import styles from "./CartList.module.scss";
+import { deleteCart } from "@/api";
+import { useRouter } from "next/router";
 
 function CartList({ carts = [] }) {
+  const router = useRouter();
   const totalPrice = carts.reduce(
     (acc, cart) => acc + parseFloat(cart.price || 0),
     0
   );
+
+  const handleDeleteCart = async (id) => {
+    await deleteCart(id);
+    alert("삭제되었습니다.");
+    router.reload();
+  };
 
   return (
     <div className={styles["cart-container"]}>
@@ -26,6 +35,12 @@ function CartList({ carts = [] }) {
                 {parseFloat(cart.price).toLocaleString()}원
               </p>
             </div>
+            <button
+              className={styles["cart-delete-button"]}
+              onClick={() => handleDeleteCart(cart.id)}
+            >
+              삭제
+            </button>
           </li>
         ))}
       </ul>

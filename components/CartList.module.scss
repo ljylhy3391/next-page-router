@@ -33,6 +33,7 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {
+    cursor: pointer;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
@@ -87,6 +88,16 @@
   }
 }
 
+.cart-delete-button {
+  background: #ff0000;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
 .cart-summary {
   background: #f8f9fa;
   border-radius: 8px;
@@ -124,4 +135,3 @@
   font-size: 24px;
   color: #2563eb;
 }
-
