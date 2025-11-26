@@ -8,14 +8,36 @@ _app.jsx 파일 대신 사용하여 공통 레이아웃을 적용
  */
 
 import Link from "next/link";
+import { useRouter } from "next/router";
+import styles from "./Layout.module.scss";
 
 function Layout({ children }) {
+  const router = useRouter();
+
+  const isActive = (path) => router.pathname === path;
+
   return (
-    <div>
-      <nav>
-        <Link href="/">홈</Link> | <Link href="/cart">장바구니</Link>
+    <div className={styles.container}>
+      <nav className={styles.nav}>
+        <div className={styles.navContent}>
+          <Link
+            href="/"
+            className={`${styles.link} ${isActive("/") ? styles.active : ""}`}
+          >
+            홈
+          </Link>
+          <span className={styles.separator}>|</span>
+          <Link
+            href="/cart"
+            className={`${styles.link} ${
+              isActive("/cart") ? styles.active : ""
+            }`}
+          >
+            장바구니
+          </Link>
+        </div>
       </nav>
-      {children}
+      <main className={styles.main}>{children}</main>
     </div>
   );
 }

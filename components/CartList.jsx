@@ -12,9 +12,14 @@ function CartList({ carts = [] }) {
   );
 
   const handleDeleteCart = async (id) => {
-    await deleteCart(id);
-    alert("삭제되었습니다.");
-    router.reload();
+    try {
+      await deleteCart(id);
+      alert("삭제되었습니다.");
+      await router.replace(router.asPath);
+    } catch (error) {
+      console.log(error);
+      alert("삭제에 실패했습니다.");
+    }
   };
 
   return (
